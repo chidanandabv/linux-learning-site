@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LinuxClass — Complete Linux Administration Guide</title>
+<title>LinuxMaster — Complete Linux Administration Guide</title>
 <!-- xterm.js for the terminal -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css" />
 <style>
@@ -171,110 +171,95 @@ td code { font-family: 'JetBrains Mono', monospace; background: var(--bg-code); 
 .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
 /* Footer & Misc */
+.footer { background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 40px; text-align: center; color: var(--text-muted); font-size: 14px; } .footer a { color: var(--accent); text-decoration: none; }
+.sidebar-toggle { display: none; position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--gradient-1); border: none; border-radius: 50%; color: var(--bg-primary); font-size: 20px; cursor: pointer; z-index: 2000; box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4); }
+.back-to-top { position: fixed; bottom: 80px; right: 20px; width: 44px; height: 44px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; color: var(--text-primary); font-size: 18px; } .back-to-top.visible { opacity: 1; visibility: visible; } .back-to-top:hover { background: var(--accent); color: var(--bg-primary); border-color: var(--accent); }
+kbd { background: var(--bg-code); border: 1px solid var(--border-light); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-secondary); }
 /* Footer */
 .footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
-  padding: 60px 40px 30px;
+  padding: 40px;
   color: var(--text-muted);
   font-size: 14px;
-  margin-top: 60px;
 }
 
-.footer-container {
+.footer-content {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 2fr;
-  gap: 60px;
-  margin-bottom: 40px;
-}
-
-.footer-brand .footer-logo {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 16px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .footer-brand p {
+  margin: 4px 0;
   line-height: 1.6;
-  max-width: 420px;
+}
+
+.footer-tagline {
+  font-size: 13px;
+  color: var(--text-secondary);
 }
 
 .footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  display: flex;
+  align-items: center;
 }
 
-.footer-col h4 {
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--text-primary);
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 16px;
-}
-
-.footer-col a {
-  display: block;
-  color: var(--text-secondary);
   text-decoration: none;
-  padding: 6px 0;
-  transition: all 0.2s ease;
+  padding: 10px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
-.footer-col a:hover {
+.github-link:hover {
+  border-color: var(--accent);
   color: var(--accent);
-  transform: translateX(5px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.15);
 }
 
-.footer-col a svg {
-  width: 16px;
-  height: 16px;
-  vertical-align: -3px;
-  margin-right: 6px;
-  fill: currentColor;
+.github-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .footer-bottom {
   max-width: 1200px;
   margin: 0 auto;
   border-top: 1px solid var(--border);
-  padding-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 13px;
+  padding-top: 20px;
+  text-align: center;
+  color: var(--text-muted);
 }
 
-.footer-tagline {
-  color: var(--accent-3);
-  font-weight: 500;
-}
-
+/* Mobile Responsive */
 @media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .footer-links {
-    grid-template-columns: 1fr 1fr;
-  }
-  .footer-bottom {
+  .footer-content {
     flex-direction: column;
     text-align: center;
+  }
+  .footer {
+    padding: 30px 20px;
   }
 }
 
 /* Terminal Panel Styles */
-.terminal-toggle-btn { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background: var(--gradient-1); border: none; padding: 14px 24px; border-radius: 50px; color: var(--bg-primary); font-weight: bold; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.terminal-toggle-btn { position: fixed; bottom: 80px; right: 30px; z-index: 9999; background: var(--gradient-1); border: none; padding: 14px 24px; border-radius: 50px; color: var(--bg-primary); font-weight: bold; cursor: pointer; box-shadow: 0 4px 20px rgba(0, 212, 255, 0.4); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; font-size: 14px; }
 .terminal-toggle-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(0, 212, 255, 0.5); }
 .terminal-panel { position: fixed; top: 0; right: -500px; width: 480px; height: 100vh; background: var(--bg-card); border-left: 1px solid var(--border); z-index: 10001; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; box-shadow: -10px 0 40px rgba(0,0,0,0.4); }
 .terminal-panel.open { right: 0; }
@@ -306,20 +291,18 @@ td code { font-family: 'JetBrains Mono', monospace; background: var(--bg-code); 
 <body>
 <div class="loading-screen" id="loadingScreen">
   <div class="loading-terminal">
-    <div class="line"><span class="prompt">▼
-🐧</span><span class="cmd">systemctl start LinuxClass</span></div>
+    <div class="line"><span class="prompt">$ </span><span class="cmd">systemctl start linuxclass</span></div>
     <div class="line"><span class="output">Loading modules...</span></div>
     <div class="line"><span class="output">Compiling command database...</span></div>
     <div class="line"><span class="output">✓ 200+ commands loaded</span></div>
-    <div class="line"><span class="success">✓ LinuxClass is ready!</span></div>
+    <div class="line"><span class="success">✓ Linuxclass is ready!</span></div>
   </div>
   <div class="loading-bar"><div class="loading-bar-fill"></div></div>
 </div>
 <canvas id="particles-canvas"></canvas>
 
 <nav class="navbar" id="navbar">
-  <a href="#" class="nav-logo"><div class="nav-logo-icon">▼
-🐧</div><span class="nav-logo-text">LinuxClass</span></a>
+  <a href="#" class="nav-logo"><div class="nav-logo-icon">L</div><span class="nav-logo-text">Linuxclass</span></a>
   <div class="nav-links">
     <a href="#basics" class="active">Basics</a>
     <a href="#files">Files</a>
@@ -334,7 +317,6 @@ td code { font-family: 'JetBrains Mono', monospace; background: var(--bg-code); 
     <span class="search-shortcut">Ctrl+K</span>
     <div class="search-results" id="searchResults"></div>
   </div>
-  <!-- <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div> -->
 </nav>
 
 <section class="hero" id="hero">
@@ -404,10 +386,10 @@ td code { font-family: 'JetBrains Mono', monospace; background: var(--bg-code); 
   </aside>
 
   <main class="content-area">
-    <!-- <div class="progress-section animate-on-scroll">
+    <div class="progress-section animate-on-scroll">
       <div class="progress-header"><h3>📈 Your Learning Progress</h3><span class="progress-percentage" id="progressPercent">0%</span></div>
       <div class="progress-bar"><div class="progress-bar-fill" id="progressFill" style="width: 0%"></div></div>
-    </div> -->
+    </div>
 
     <section class="section animate-on-scroll" id="basics">
       <div class="section-header"><div class="section-icon" style="background: rgba(0,212,255,0.15); color: var(--accent);">🏠</div><h2>Linux Basics</h2><p>Fundamental concepts every Linux administrator must know before diving into commands.</p><div class="section-divider" style="background: var(--gradient-1);"></div></div>
@@ -635,45 +617,24 @@ td code { font-family: 'JetBrains Mono', monospace; background: var(--bg-code); 
         <div class="accordion-item"><div class="accordion-header" onclick="toggleAccordion(this)"><span>💾 Storage (12 commands)</span><span class="arrow">▼</span></div><div class="accordion-body"><div class="accordion-body-inner"><ul class="example-list"><li><span class="cmd">lsblk</span><span class="desc">Block devices</span></li><li><span class="cmd">fdisk -l</span><span class="desc">Partition tables</span></li><li><span class="cmd">df -h</span><span class="desc">Disk usage</span></li><li><span class="cmd">du -sh dir/</span><span class="desc">Directory size</span></li><li><span class="cmd">mount /dev/sda1 /mnt</span><span class="desc">Mount partition</span></li><li><span class="cmd">umount /mnt</span><span class="desc">Unmount</span></li><li><span class="cmd">mkfs.ext4 /dev/sda1</span><span class="desc">Format ext4</span></li><li><span class="cmd">fsck /dev/sda1</span><span class="desc">Check filesystem</span></li><li><span class="cmd">blkid</span><span class="desc">Device UUIDs</span></li><li><span class="cmd">pvcreate /dev/sdb</span><span class="desc">Create PV (LVM)</span></li><li><span class="cmd">vgcreate vg /dev/sdb</span><span class="desc">Create VG (LVM)</span></li><li><span class="cmd">lvcreate -L 10G -n lv vg</span><span class="desc">Create LV (LVM)</span></li></ul></div></div></div>
       </div>
     </section>
-<footer class="footer">
-  <div class="footer-container">
-    <!-- Brand -->
-    <div class="footer-brand">
-      <div class="footer-logo">🐧 <strong>LinuxMaster</strong></div>
-      <p>The most comprehensive, interactive guide to Linux system administration. Learn commands, practice in-browser, and master the terminal safely.</p>
-    </div>
 
-    <!-- Links Grid -->
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <p>🐧 <strong>Linuxclass</strong> — Complete Linux Administration Guide</p>
+      <p class="footer-tagline">Built for aspiring and experienced Linux system administrators.</p>
+    </div>
     <div class="footer-links">
-      <div class="footer-col">
-        <h4>Learn</h4>
-        <a href="#basics">Linux Basics</a>
-        <a href="#files">File Management</a>
-        <a href="#users">Users & Groups</a>
-        <a href="#scripting">Shell Scripting</a>
-      </div>
-      <div class="footer-col">
-        <h4>Reference</h4>
-        <a href="#quickref">Quick Reference</a>
-        <a href="#cheatsheet">Command Cheat Sheet</a>
-        <a href="#troubleshooting">Troubleshooting</a>
-        <a href="#security">Security Hardening</a>
-      </div>
-      <div class="footer-col">
-        <h4>Community & Code</h4>
-        <a href="https://github.com/chidanandabv/linux-learning/" target="_blank" rel="noopener noreferrer">
-          <!-- GitHub SVG Icon -->
-          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2-.82-.64-.01-1.34-.24-1.96-.37-.51-.13-.07-.18-.19-.65-.6-.22-.25-.24-.21-.08-.63.69-.3 1.42.16 1.7.28.47-.13.95-.25 1.42-.25 2.11 0 3.01.94 3.37 1.71 1.12-.27 2.02-.85 2.62-1.46.05-.13-.13-.65-.64-.65-1.66 0-2.51.57-3.13 1.22.99.1 1.96.45 2.48.95.44.41.87.98.98 1.47.17-.38.53-1.08.63-1.22.46-.08.9-.3 1.16-.52.12-.06.22-.08.3-.08.08 0 .16.02.24.06 1.4.71 2.3 2.25 2.3 3.94 0 2.75-1.57 3.46-3.07 3.83.27.23.51.68.51 1.37 0 1-.01 1.81-.01 2.06 0 .21.15.45.56.38C13.71 14.53 16 11.54 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          GitHub Repository
-        </a>
-     
-      </div>
+      <a href="https://github.com/chidanandabv/linux-learning" target="_blank" rel="noopener noreferrer" class="github-link">
+        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        GitHub Repository
+      </a>
     </div>
   </div>
-
   <div class="footer-bottom">
-    <p>&copy; <span id="footer-year">2026</span> LinuxMaster. Open-source under MIT License.</p>
-    <p class="footer-tagline">💡 Tip: Click the <strong>Practice Terminal</strong> button to run commands safely in-browser.</p>
+    <p style="font-size: 12px;">Practice makes perfect. Open your terminal and start exploring!</p>
   </div>
 </footer>
   </main>
