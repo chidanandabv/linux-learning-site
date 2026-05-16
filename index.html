@@ -1033,8 +1033,37 @@ document.addEventListener('click', e => { if (!e.target.closest('.nav-search')) 
 document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); searchInput.focus(); } if (e.key === 'Escape') { searchResults.classList.remove('active'); searchInput.blur(); } });
 function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
 sidebarLinks.forEach(l => l.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(l.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (window.innerWidth <= 1024) document.getElementById('sidebar').classList.remove('open'); }));
-document.querySelectorAll('.nav-links a').forEach(l => l.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(l.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); }));
+const navLinks =
+    document.querySelectorAll('.nav-links a');
 
+navLinks.forEach(link => {
+
+    link.addEventListener('click', e => {
+
+        e.preventDefault();
+
+        // remove old active class
+        navLinks.forEach(l =>
+            l.classList.remove('active')
+        );
+
+        // add active class to clicked link
+        link.classList.add('active');
+
+        // scroll to section
+        const target =
+            document.querySelector(
+                link.getAttribute('href')
+            );
+
+        if (target) {
+
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 // ==================== TERMINAL PANEL LOGIC ====================
 let terminalManager;
 function toggleTerminal() {
