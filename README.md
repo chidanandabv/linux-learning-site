@@ -4,7 +4,7 @@ A beginner-friendly Linux learning platform built using HTML, CSS, and GitHub Pa
 
 ## Live Website
 
-[https://chidanandabv.github.io/linux-learning/](https://chidanandabv.github.io/linux-learning/)
+[https://chidanandabv.github.io/linux-learning/](https://github.com/chidanandabv/linux-learning-site)
 
 ---
 
